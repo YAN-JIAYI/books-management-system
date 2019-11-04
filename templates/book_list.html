@@ -1,0 +1,51 @@
+{% extends 'home.html' %}
+
+{% block content %}
+    <body>
+    <h2 class="text-center">书籍列表页面</h2>
+    <div class="container-fluid">
+        <div class="row col-md-8 col-md-offset-2">
+            <div class="bs-example" data-example-id="bordered-table">
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th class="text-center">ID</th>
+                        <th class="text-center">Title</th>
+                        <th class="text-center">Price</th>
+                        <th class="text-center">Publish</th>
+                        <th class="text-center">Author</th>
+                        <th class="text-center">exit</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for book_obj in book_queryset %}
+                        <tr class="text-center">
+                            <td>{{ book_obj.id }}</td>
+                            <td>{{ book_obj.title }}</td>
+                            <td>{{ book_obj.price }}</td>
+                            <td>{{ book_obj.publish.name }}</td>
+                            <td> {% for author_obj in book_obj.author.all %}
+                                {% if forloop.last %}
+                                    {{ author_obj.name }}
+                                {% else %}
+                                    {{ author_obj.name }}<br>
+                                {% endif %}
+                            {% endfor %}</td>
+
+                            <td class="text-center">
+                        <span><a class="btn btn-danger btn-xs" href="/del_book/?del_id={{ book_obj.id }}"
+                                 role="button">删除</a></span>
+                                <span><a class="btn btn-primary btn-xs"
+                                         href="/edit_book/?edit_id={{ book_obj.id }}"
+                                         role="button">编辑</a></span>
+                        </tr>
+                    {% endfor %}
+
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    </body>
+{% endblock %}

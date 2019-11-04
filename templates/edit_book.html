@@ -1,0 +1,32 @@
+{% extends 'home.html' %}
+
+{% block content %}
+    <h2 class="text-center">编辑书籍页面</h2>
+    <form action="" method="post">
+        <p>title:<input type="text" name="title" class="form-control" value="{{ edit_obj.title }}"></p>
+        <p>price:<input type="text" name="price" class="form-control" value="{{ edit_obj.price }}"></p>
+        <p>publish:
+            <select name="publish" id="" class="form-control">
+                {% for publish_obj in publish_queryset %}
+                    {% if edit_obj.publish == publish_obj %}
+                        <option value="{{ publish_obj.pk }}" selected>{{ publish_obj.name }}</option>
+                    {% else %}
+                        <option value="{{ publish_obj.pk }}">{{ publish_obj.name }}</option>
+                    {% endif %}
+                {% endfor %}
+            </select>
+        </p>
+        <p>author:
+            <select name="author" id="" class="form-control" multiple>
+                {% for author_obj in author_queryset %}
+                    {% if edit_obj.author in author_obj%}
+                    <option value="{{ author_obj.pk }}" selected>{{ author_obj.name }}</option>
+                    {% else %}
+                    <option value="{{ author_obj.pk }}">{{ author_obj.name }}</option>
+                    {% endif %}
+                {% endfor %}
+            </select>
+        </p>
+        <input type="submit" class="btn btn-primary pull-right">
+    </form>
+{% endblock %}

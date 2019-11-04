@@ -1,0 +1,33 @@
+{% extends 'home.html' %}
+
+{% block content %}
+<h2 class="text-center">作者列表页面</h2>
+<div class="container-fluid">
+    <div class="row col-md-8 col-md-offset-2">
+        <div class="bs-example" data-example-id="bordered-table">
+            <table class="table table-bordered">
+                <thead >
+                <tr>
+                    <th class="text-center">ID</th>
+                    <th class="text-center">Name</th>
+                    <th class="text-center">phone</th>
+                    <th class="text-center">exit</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for author_obj in author_queryset %}
+                    <tr class="text-center">
+                        <td>{{ author_obj.id }}</td>
+                        <td>{{ author_obj.name }}</td>
+                        <td>{{ author_obj.author_detail.phone }}</td>
+                        <td class="text-center">
+                            <span><a class="btn btn-danger btn-xs" href="/del_author/?del_id={{ author_obj.id }}" role="button">删除</a></span>
+                            <span><a class="btn btn-primary btn-xs" href="/edit_author/?edit_id={{ author_obj.id }}" role="button">编辑</a></span>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

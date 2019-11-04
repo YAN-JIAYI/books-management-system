@@ -1,0 +1,33 @@
+{% extends 'home.html' %}
+
+{% block content %}
+<h2 class="text-center">出版社列表页面</h2>
+<div class="container-fluid">
+    <div class="row col-md-8 col-md-offset-2">
+        <div class="bs-example" data-example-id="bordered-table">
+            <table class="table table-bordered">
+                <thead >
+                <tr>
+                    <th class="text-center">ID</th>
+                    <th class="text-center">Name</th>
+                    <th class="text-center">Addr</th>
+                    <th class="text-center">exit</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for publish_obj in publish_queryset %}
+                    <tr class="text-center">
+                        <td>{{ publish_obj.id }}</td>
+                        <td>{{ publish_obj.name }}</td>
+                        <td>{{ publish_obj.addr }}</td>
+                        <td class="text-center">
+                            <span><a class="btn btn-danger btn-xs" href="/del_publish/?del_id={{ publish_obj.id }}" role="button">删除</a></span>
+                            <span><a class="btn btn-primary btn-xs" href="/edit_publish/?edit_id={{ publish_obj.id }}" role="button">编辑</a></span>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

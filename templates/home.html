@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+    <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+
+</head>
+<body>
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">图书管理系统</a>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                {#                <li class="active"><a href="book_list.html">关于书籍 <span class="sr-only">(current)</span></a></li>#}
+{#                <ul class="dropdown-menu">#}
+                    <li><a href="/add_book">添加书籍</a></li>
+                    <li><a href="/add_author">添加作者</a></li>
+                    <li><a href="/add_publish">添加出版社</a></li>
+            </ul>
+                    <form class="navbar-form navbar-left">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Search">
+                        </div>
+                        <button type="submit" class="btn btn-default">搜索</button>
+                    </form>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#">Hello!小可爱</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false">更多操作 <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/end">联系我们</a></li>
+                        <li><a href="/end">售后</a></li>
+                        <li><a href="/end">团购</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="alert alert-success" role="alert">
+                <a href="/book_list" class="alert-link">查看所有书籍</a>
+            </div>
+            <div class="alert alert-info" role="alert">
+                <a href="/publish_list" class="alert-link">查看所有出版社</a>
+            </div>
+            <div class="alert alert-warning" role="alert">
+                <a href="/author_list" class="alert-link">查看所有作者</a>
+            </div>
+            <div class="alert alert-danger" role="alert">
+                <a href="/end" class="alert-link">了解更多</a>
+            </div>
+            <div class="alert alert-success" role="alert">
+                <a href="/end" class="alert-link">联系我们</a>
+            </div>
+
+        </div>
+        <div class="col-md-9 jumbotron">
+            {% block content %}
+                <h1>Hello World!</h1>
+                <p>Time goes by so fast, people go in and out of your life. You must never miss the opportunity to tell these people how much they mean to you.</p>
+                <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
+            {% endblock %}
+
+        </div>
+    </div>
+</div>
+</div>
+</body>
+</html>
